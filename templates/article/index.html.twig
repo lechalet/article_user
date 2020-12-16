@@ -19,6 +19,7 @@
         {% for article in articles %}
             <tr>
                 <td>{{ article.id }}</td>
+                <td>{{ article.author.username }}</td>
                 <td>{{ article.name }}</td>
                 <td>{{ article.image }}</td>
                 <td>{{ article.description }}</td>
