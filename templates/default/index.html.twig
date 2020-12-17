@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<!-- As a link -->
+	<nav class="navbar navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Navbar</a>
+			<a>Veuillez vous connecter avant d'afficher la liste des articles</a>
+			<div class="col-2">
+				<a class="navbar-brand" href="/login">Connexion</a>
+				<a class="navbar-brand" href="/register">Inscription</a>
+			</div>
+		</div>
+	</nav>
+{% endblock %}
