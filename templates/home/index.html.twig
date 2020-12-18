@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<!-- As a link -->
+	<nav class="navbar navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/home">Accueil</a>
+			<a class="navbar-brand" href="/article">Liste des articles</a>
+			<a class="navbar-brand" href="{{ path('article_new') }}">Créer un article</a>
+			<a class="navbar-brand">{{ app.user.username }}</a>
+			<a class="navbar-brand" href="{{ path('app_logout') }}">Déconnexion</a>
+		</div>
+	</nav>
+{% endblock %}

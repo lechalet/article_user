@@ -1,49 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index
-{% endblock %}
+{% block title %}Liste d'article{% endblock %}
 
 {% block body %}
 	<!-- As a link -->
 	<nav class="navbar navbar-light bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Navbar</a>
+			<a class="navbar-brand" href="/home">Accueil</a>
 			<a class="navbar-brand" href="/article">Liste des articles</a>
-			<a class="navbar-brand" href="/logout">Déconnexion</a>
+			<a class="navbar-brand" href="{{ path('article_new') }}">Créer un article</a>
+			<a class="navbar-brand">{{ app.user.username }}</a>
+			<a class="navbar-brand" href="{{ path('app_logout') }}">Déconnexion</a>
 		</div>
 	</nav>
-	<h1>Article index</h1>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Image</th>
-				<th>Description</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for article in articles %}
-				<tr>
-					<td>{{ article.id }}</td>
-					<td>{{ article.author.username }}</td>
-					<td>{{ article.name }}</td>
-					<td>{{ article.image }}</td>
-					<td>{{ article.description }}</td>
-					<td>
-						<a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-						<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="5">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-
-	<a href="{{ path('article_new') }}">Create new</a>
+	<!-- Card Boostrap -->
+	{% for article in articles %}
+		<div class="card m-3 d-inline-flex" style="width: 18rem;">
+			<img src="{{ article.image }}" class="card-img-top img-fluid" alt="{{ article.image }}">
+			<div class="card-body">
+				<h5 class="card-title">{{ article.name }}</h5>
+				<p class="card-text">{{ article.description }}</p>
+				<a class="card-text text-decoration-none text-secondary" href="{{ path('article_show', {'id': article.id}) }}">Afficher le détail</a>
+				<p class="blockquote-footer mt-2">Créé par : {{ article.author.username }}</p>
+			</div>
+		</div>
+	{% endfor %}
 {% endblock %}
